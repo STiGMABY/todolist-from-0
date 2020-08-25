@@ -14,7 +14,6 @@ export type TasksType = {
 
 export type FilterType = 'active' | 'complete' | 'all'
 
-
 function App() {
 
     let [tasks, setTasks] = useState<Array<TasksType>>([
@@ -26,7 +25,6 @@ function App() {
     ])
 
     let [filter, setFilter] = useState<FilterType>('all')
-
 
     if(filter === 'active'){
         tasks = tasks.filter(t => !t.isDone)
@@ -44,12 +42,19 @@ function App() {
         setFilter(value)
     }
 
+    function addTask(text: string) {
+        let task = {id: v1(), title: text, isDone: true}
+        let newTasks = [task, ...tasks]
+        setTasks(newTasks)
+    }
+
     return (
         <div className="App">
             <TodoList
                 tasks={tasks}
                 removeTask={removeTask}
                 changeFilter={changeFilter}
+                addTask={addTask}
 
             />
         </div>
