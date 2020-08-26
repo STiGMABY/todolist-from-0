@@ -13,4 +13,8 @@
 .is-done {
     opacity: 0.5;
 }
+.app{
+    display: flex;
+    margin: 15px;
+}
 
